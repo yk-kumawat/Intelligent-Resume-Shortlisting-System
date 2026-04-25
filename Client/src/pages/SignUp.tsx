@@ -31,9 +31,22 @@ const SignUp: React.FC = () => {
     if (!role) return setError('Please select a role.');
 
     setIsLoading(true);
-    await new Promise((r) => setTimeout(r, 1200));
-    setIsLoading(false);
-    navigate(role === 'hr' ? '/dashboard' : '/applicant');
+    try {
+      const res = await fetch('http://localhost:3000/auth/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ fullName, email, password, role }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Signup failed.');
+      localStorage.setItem('irss_token', data.token);
+      localStorage.setItem('irss_user', JSON.stringify(data.user));
+      navigate(data.user.role === 'hr' ? '/dashboard' : '/applicant');
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (

@@ -7,13 +7,28 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError(null);
     setIsLoading(true);
-    await new Promise((r) => setTimeout(r, 1000));
-    setIsLoading(false);
-    navigate('/dashboard');
+    try {
+      const res = await fetch('http://localhost:3000/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Login failed.');
+      localStorage.setItem('irss_token', data.token);
+      localStorage.setItem('irss_user', JSON.stringify(data.user));
+      navigate(data.user.role === 'hr' ? '/dashboard' : '/applicant');
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -28,6 +43,12 @@ const Login: React.FC = () => {
             <h1 className="font-headline text-2xl font-semibold text-on-surface mb-1">Sign in</h1>
             <p className="text-on-surface-variant text-sm">Welcome back to your workspace</p>
           </div>
+
+          {error && (
+            <div className="mb-4 px-4 py-2.5 rounded-xl bg-error-container/20 border border-error/20 text-error text-xs">
+              {error}
+            </div>
+          )}
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
 
