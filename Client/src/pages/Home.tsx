@@ -29,7 +29,7 @@ const Home: React.FC = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               {/* Action Button: Primary Gradient */}
               <button 
-                onClick={() => navigate('/dashboard')}
+                onClick={() => navigate('/login')}
                 className="group relative flex min-w-[200px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-8 editorial-gradient text-on-primary text-lg font-bold transition-all hover:brightness-110 active:scale-95 shadow-lg shadow-primary/10"
               >
                 <span className="relative z-10 flex items-center gap-2">
