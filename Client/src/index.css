@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme {
+  --color-inverse-on-surface: #535559;
+  --color-on-secondary: #0d232b;
+  --color-primary: #bbc3ff;
+  --color-on-error: #490013;
+  --color-on-surface-variant: #a5abb6;
+  --color-error-container: #7f2737;
+  --color-on-tertiary-fixed: #003840;
+  --color-surface-bright: #252d36;
+  --color-primary-fixed: #dee0ff;
+  --color-background: #0c0e11;
+  --color-secondary-fixed: #cfe6f2;
+  --color-surface: #0c0e11;
+  --color-surface-tint: #bbc3ff;
+  --color-on-background: #e0e6f1;
+  --color-surface-container-high: #1b2027;
+  --color-surface-container: #161a1f;
+  --color-secondary: #8ba1ac;
+  --color-surface-dim: #0c0e11;
+  --color-primary-container: #002ccd;
+  --color-on-secondary-fixed-variant: #495f69;
+  --color-tertiary-fixed-dim: #3cd2eb;
+  --color-tertiary-container: #50e1f9;
+  --color-on-primary-container: #c7cdff;
+  --color-secondary-fixed-dim: #c1d8e4;
+  --color-error-dim: #b95463;
+  --color-secondary-container: #293e48;
+  --color-tertiary-dim: #3cd2eb;
+  --color-outline-variant: #424851;
+  --color-on-primary-fixed-variant: #2444eb;
+  --color-on-tertiary-fixed-variant: #005763;
+  --color-on-secondary-container: #acc3ce;
+  --color-secondary-dim: #8ba1ac;
+  --color-surface-variant: #20262e;
+  --color-error: #ec7c8a;
+  --color-tertiary: #88ebff;
+  --color-on-primary-fixed: #0027ba;
+  --color-on-secondary-fixed: #2d424c;
+  --color-on-primary: #0028bc;
+  --color-inverse-surface: #f9f9fd;
+  --color-tertiary-fixed: #50e1f9;
+  --color-primary-dim: #a9b4ff;
+  --color-surface-container-low: #111418;
+  --color-on-error-container: #ff97a3;
+  --color-surface-container-highest: #20262e;
+  --color-on-tertiary-container: #004d58;
+  --color-on-surface: #e0e6f1;
+  --color-outline: #707680;
+  --color-on-tertiary: #005763;
+  --color-primary-fixed-dim: #cdd2ff;
+  --color-surface-container-lowest: #000000;
+  --color-inverse-primary: #2949ef;
+
+  --font-headline: "Manrope", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-label: "Inter", sans-serif;
+}
+
+body {
+  background-color: #0c0e11;
+  color: #e0e6f1;
+  margin: 0;
+  overflow: hidden;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.editorial-gradient {
+  background: linear-gradient(135deg, #bbc3ff 0%, #002ccd 100%);
+}
+
+.surface-glass {
+  background: rgba(37, 45, 54, 0.6);
+  backdrop-filter: blur(20px);
+}
